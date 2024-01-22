@@ -27,6 +27,9 @@ void reverse(char* string);
 size_t find_file_size(FILE* fp);
 void fill_struct_array(struct data_string* list_of_lines, char* string, int number_lines);
 char* r_replace(char *orig, int size);
-void quick_sort(char** filtered_arr, struct data_string* arr, int left, int right);
+void quick_sort(int (*cmptor)(struct data_string, struct data_string), struct data_string* arr, int left, int right);
+int reverse_cmptor(struct data_string str1, struct data_string str2);
+int cmptor(struct data_string str1, struct data_string str2);
+
 
 #endif  //SERVER_H

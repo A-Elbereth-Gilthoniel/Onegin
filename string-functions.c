@@ -123,3 +123,79 @@ int find_number_lines(char* string)
 
     return number_lines;
 }
+
+//------------------------------------------------------------------------------
+
+int cmptor(struct data_string str1, struct data_string str2)
+{
+    int ind1 = 0;
+    int ind2 = 0;
+    while((ind1 < str1.length) && (ind2 < str2.length))
+    {
+        char symbol1 = str1.str[ind1];
+        char symbol2 = str2.str[ind2];
+
+        if (symbol2 >= 'A' && symbol2 <= 'Z')
+                symbol2 = symbol2 + 32;
+        if (symbol1 >= 'A' && symbol1 <= 'Z')
+                symbol1 = symbol1 + 32;
+
+        if ((symbol1 > 'z' || symbol1 < 'a') || (symbol2 > 'z' || symbol2 < 'a'))
+        {
+            if (symbol1 > 'z' || symbol1 < 'a')
+                ind1++;
+            if (symbol2 > 'z' || symbol2 < 'a')
+                ind2++;
+        }
+        else if (symbol1 > symbol2)
+            return 1;
+        else if (symbol1 < symbol2)
+            return -1;
+        else
+            ind1++;
+            ind2++;
+    }
+    if (str1.length == str2.length)
+        return 0;
+    if (str1.length > str2.length)
+        return 1;
+    return -1;
+}
+
+//---------------------------------------------------------------------
+
+int reverse_cmptor(struct data_string str1, struct data_string str2)
+{
+    int ind1 = str1.length - 1;
+    int ind2 = str2.length - 1;
+    while((ind1 >= 0) && (ind2 >= 0))
+    {
+        char symbol1 = str1.str[ind1];
+        char symbol2 = str2.str[ind2];
+
+        if (symbol2 >= 'A' && symbol2 <= 'Z')
+                symbol2 = symbol2 + 32;
+        if (symbol1 >= 'A' && symbol1 <= 'Z')
+                symbol1 = symbol1 + 32;
+
+        if ((symbol1 > 'z' || symbol1 < 'a') || (symbol2 > 'z' || symbol2 < 'a'))
+        {
+            if (symbol1 > 'z' || symbol1 < 'a')
+                ind1--;
+            if (symbol2 > 'z' || symbol2 < 'a')
+                ind2--;
+        }
+        else if (symbol1 > symbol2)
+            return 1;
+        else if (symbol1 < symbol2)
+            return -1;
+        else
+            ind1--;
+            ind2--;
+    }
+    if (str1.length == str2.length)
+        return 0;
+    if (str1.length > str2.length)
+        return 1;
+    return -1;
+}
