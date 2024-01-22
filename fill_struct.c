@@ -6,7 +6,7 @@ void fill_struct_array(struct data_string* list_of_lines, char* string, int numb
     char* new_line_pos = 0;
     for (int i = 0; i < number_lines; i++)
     {
-        new_line_pos = strchr(string, '\0');
+        new_line_pos = strchr(string, '\n');
         length = new_line_pos - string + 1;
         list_of_lines[i].str = (char*)calloc(length, sizeof(char));
 
