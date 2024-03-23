@@ -7,6 +7,7 @@
 #include <assert.h>
 #include <stdlib.h>
 
+#define FILE_REPOSITORY "./files/"
 
 struct data_string {
     char* str;

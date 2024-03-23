@@ -1,15 +1,14 @@
 #include "server.h"
 
 // argc argv
-int main()
+int main(int argc, char *argv[])
 {
-    char name[100] = "";
-    printf("What file are we reading today?\n");       // onegin.txt
-    gets(name);
+    char file_name[100] = FILE_REPOSITORY;
+    strcat(file_name, argv[1]);
     struct data_string* list_of_lines = NULL;
 
-    FILE *fp = fopen(name, "rb");
-    assert(fp && ("WTF?! Where's this file ''%s''!?", name));
+    FILE *fp = fopen(file_name, "rb");
+    assert(fp && ("WTF?! Where's this file ''%s''!?", file_name));
 
     size_t n = find_file_size(fp);
 

@@ -1,16 +1,21 @@
-TARGET = Project
+TARGET = onegin
 
-SRC = $(wildcard *.c)
-OBJ = $(patsubst %.c, %.o, $(SRC))
+PREF_SRC = ./src/
+PREF_OBJ = ./obj/
+PREF_FILE = ./files/
+DELF = .\obj\
+
+SRC = $(wildcard $(PREF_SRC)*.c)
+OBJ = $(patsubst $(PREF_SRC)%.c, $(PREF_OBJ)%.o, $(SRC))
 
 
 $(TARGET) : $(OBJ)
 	gcc $(OBJ) -o $(TARGET)
 
-%.o : %.c
+$(PREF_OBJ)%.o : $(PREF_SRC)%.c
 	gcc -c $< -o $@
 
 
 .PHONY : clean
 clean :
-	del *.o $(TARGET).exe -rf
+	del $(DELF) $(TARGET).exe -rf
