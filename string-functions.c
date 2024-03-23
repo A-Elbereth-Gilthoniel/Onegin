@@ -152,8 +152,10 @@ int cmptor(struct data_string str1, struct data_string str2)
         else if (symbol1 < symbol2)
             return -1;
         else
+        {
             ind1++;
             ind2++;
+        }
     }
     if (str1.length == str2.length)
         return 0;
@@ -190,8 +192,10 @@ int reverse_cmptor(struct data_string str1, struct data_string str2)
         else if (symbol1 < symbol2)
             return -1;
         else
+        {
             ind1--;
             ind2--;
+        }
     }
     if (str1.length == str2.length)
         return 0;
